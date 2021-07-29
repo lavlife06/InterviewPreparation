@@ -1,3 +1,4 @@
+// Object.prototype.toString.call(person2) === '[object Array]' //will return false
 // 1)                                                                                      FUNCTION BORROWING
 // const person1 = {
 //     firstname: "lav",
@@ -25,18 +26,32 @@ const person2 = {
     firstname: "karan",
     lastname: "mandal",
 };
-const printName = function (hometown, state) {
+
+const printName = function (hometown, state, mystate) {
     console.log(
         this.firstname + " " + this.lastname + " from " + `${hometown},` + state
     );
 };
 
-printName.call(person2, "surat", "jahangirpura");
+// printName.call(person2, "surat", "jahangirpura");
 
-printName.apply(person2, ["surat", "jahangirpura"]);
+// printName.apply(person2, ["surat", "jahangirpura"]);
 
-const printname = printName.bind(person2, "surat", "jahangirpura");
-printname();
+// const printname = printName.bind(person2, "surat", "jahangirpura");
+// printname();
+
+////////                                                                                MyBind
+
+Function.prototype.mybind = function (...args) {
+    let func = this;
+    let params = args.slice(1);
+    return function (...args2) {
+        func.apply(args[0], [...params, ...args2]);
+    };
+};
+
+const printname = printName.mybind(person2, "jahangirpura");
+printname("Surat");
 
 //  /// /// // / / /                                                                    NOTES
 
