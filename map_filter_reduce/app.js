@@ -1,31 +1,40 @@
 // const arr = [5, 10, 4, 6, 5];
 
 const arr = [
-    { name: "lav", age: 54 },
-    { name: "karan", age: 34 },
-    { name: "lav1", age: 54 },
-    { name: "lav2", age: 44 },
-    { name: "lav3", age: 34 },
-    { name: "lav4", age: 52 },
+  { name: 'lav', age: 54 },
+  { name: 'karan', age: 34 },
+  { name: 'lav1', age: 54 },
+  { name: 'lav2', age: 44 },
+  { name: 'lav3', age: 34 },
+  { name: 'lav4', age: 52 },
 ];
 
-Array.prototype.myreduce = function (fn, initial) {
-    for (let ele of this) {
-        initial = fn(initial || 0, ele);
-    }
-    return initial;
-};
+//  acc = accumulator and  curr =  current element
 
-let obj = arr.myreduce((acc, curr) => {
-    acc[curr.age] = (acc[curr.age] || 0) + 1;
-    return acc;
-}, {});
+//  Do total of ages
+const res = arr.reduce((acc, crr) => {
+  return acc + crr.age;
+}, 0);
+console.log(res);
 
+// Array.prototype.myreduce = function (fn, initial) {
+//     for (let ele of this) {
+//         initial = fn(initial || 0, ele);
+//     }
+//     return initial;
+// };
+
+// let obj = arr.myreduce((acc, curr) => {
+//     acc[curr.age] = (acc[curr.age] || 0) + 1;
+//     return acc;
+// }, {});
+
+//  arr = [1,4,5,6,4]
 // let newarr = arr.myreduce((acc, curr) => acc + curr);
 
 // console.log(newarr);
 
-console.log(obj);
+// console.log(obj);
 
 // const arr = [
 //     { name: "lav", age: 54 },
@@ -52,7 +61,8 @@ console.log(obj);
 // }, {});
 
 // let newarr = arr.filter((item) => {
-//     if (item.age > 50) {
-//         return true;
-//     }
+//   if (item.age > 50) {
+//     return true;
+//   }
 // });
+// console.log(newarr);
