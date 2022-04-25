@@ -60,3 +60,86 @@ function ClickCounter() {
   });
 }
 ClickCounter();
+
+// memoized funcion
+// const memoize = function (func) {
+//   const cache = {};
+//   return function () {
+//     const key = JSON.stringify(arguments);
+
+//     if (cache[key]) {
+//       return cache[key];
+//     } else {
+//       const result = func(...arguments);
+//       cache[key] = result;
+//       return result;
+//     }
+//   };
+// };
+
+// function add(n) {
+//   for (let i = 0; i < 200000000; i++) {
+//     // i++
+//   }
+//   return n;
+// }
+
+// const memoizedFactorial = memoize(add);
+// let a = memoizedFactorial(120); // slow
+// console.log(a);
+// let b = memoizedFactorial(120); // faster
+// console.log(b);
+
+// sum(1, 2, 3, 4);
+// sum(1)(2)(3)(4);
+// sum(1, 2, 3)(4);
+// sum(1)(2, 3, 4);
+
+// const add = (...argsa) => {
+//   return function (...argsb) {
+//     let val = 0;
+//     if (argsa && argsa.length > 0) {
+//       for (let i = 0; i < argsa.length; i++) {
+//         const element = argsa[i];
+//         val += element;
+//       }
+//     }
+//     if (argsb && argsb.length > 0) {
+//       for (let i = 0; i < argsb.length; i++) {
+//         const element = argsb[i];
+//         val += element;
+//       }
+//     }
+//     console.log(val, 'val');
+//     if (argsb) {
+//       return add(val);
+//     } else {
+//       return val;
+//     }
+//   };
+// };
+// console.log(add(1)(2)(3)(4)(), 'res');
+
+// toggle
+// const toggle = (...args) => {
+//   let currArgsInvocation = 0;
+//   const argsLength = args.length;
+//   return function () {
+//     const modified = currArgsInvocation % argsLength;
+//     currArgsInvocation += 1;
+//     console.log(args[modified]);
+//     return args[modified];
+//   };
+// };
+
+// const hello = toggle('hello');
+// hello(); // "hello";
+// hello(); // "hello";
+
+// const onOff = toggle('on', 'off');
+// onOff(); // "on"
+// onOff(); // "off"
+// onOff(); // "on"
+// onOff(); // "on"
+// onOff(); // "off"
+// onOff(); // "on"

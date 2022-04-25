@@ -113,3 +113,61 @@ getUsers()
   .catch((err) => {
     console.log('err out', err.message);
   });
+
+const promise1 = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+  const data = await res.json();
+  return data;
+};
+const promise2 = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await res.json();
+  return data;
+};
+
+// Promise.all([promise1, promise2])
+//   .then((result) => {
+//     console.log(result, 'result');
+//   })
+//   .catch((err) => {
+//     console.log(err, 'err');
+//   });
+
+// const mypromiseall = async function (arrOfPromises) {
+//   const arr = [];
+//   arrOfPromises.forEach(async (element) => {
+//     const res = await element();
+//     arr.push(res);
+//   });
+//   return arr;
+// };
+
+// const mypromiseall = (promisearr) => {
+//   const arr = [];
+//   let promiseResolvesCount = 0;
+
+//   return new Promise((resolve, rej) => {
+//     promisearr.forEach((element, index) => {
+//       element()
+//         .then((res) => {
+//           promiseResolvesCount += 1;
+//           arr[index] = res;
+//           console.log(promiseResolvesCount, 'promiseResolvesCount', arr.length);
+//           if (promiseResolvesCount === arr.length) {
+//             resolve(arr);
+//           }
+//         })
+//         .catch((err) => {
+//           rej(err.message);
+//         });
+//     });
+//   });
+// };
+
+// mypromiseall([promise1, promise2])
+//   .then((result) => {
+//     console.log(result, 'result');
+//   })
+//   .catch((err) => {
+//     console.log(err, 'err');
+//   });

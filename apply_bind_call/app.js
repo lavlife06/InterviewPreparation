@@ -18,19 +18,17 @@
 /////                                                                                       BETTER WAY
 
 const person1 = {
-    firstname: "lav",
-    lastname: "senghani",
+  firstname: 'lav',
+  lastname: 'senghani',
 };
 
 const person2 = {
-    firstname: "karan",
-    lastname: "mandal",
+  firstname: 'karan',
+  lastname: 'mandal',
 };
 
 const printName = function (hometown, state, mystate) {
-    console.log(
-        this.firstname + " " + this.lastname + " from " + `${hometown},` + state
-    );
+  console.log(this.firstname + ' ' + this.lastname + ' from ' + `${hometown},` + state);
 };
 
 // printName.call(person2, "surat", "jahangirpura");
@@ -42,16 +40,17 @@ const printName = function (hometown, state, mystate) {
 
 ////////                                                                                MyBind
 
-Function.prototype.mybind = function (...args) {
-    let func = this;
-    let params = args.slice(1);
-    return function (...args2) {
-        func.apply(args[0], [...params, ...args2]);
-    };
+// Accepting any number of arguments passed to myBind
+Function.prototype.myBind = function (obj, ...args) {
+  let func = this;
+  // Accepting arguments passed to newFunc
+  return function (...newArgs) {
+    func.apply(obj, [...args, ...newArgs]);
+  };
 };
 
-const printname = printName.mybind(person2, "jahangirpura");
-printname("Surat");
+const printname = printName.myBind(person2, 'jahangirpura');
+printname('Surat');
 
 //  /// /// // / / /                                                                    NOTES
 
