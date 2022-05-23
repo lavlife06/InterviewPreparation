@@ -17,25 +17,25 @@
 
 const urls = [
   'https://jsonplaceholder.typicode.com/users',
-  'https://jsonplaceholder.typicode.com/posts',
+  'https://jsonplaceholdee.typicode.com/posts',
   'https://jsonplaceholder.typicode.com/albums',
 ];
 
 //  It takes array of promises
-// Promise.all(
-//   urls.map((url) => {
-//     return fetch(url)
-//       .then((res) => res.json())
-//       .catch((err) => {
-//         console.log(err.message, 'particular error');
-//         throw Error('Ops!!');
-//       });
-//   }),
-// )
-//   .then((results) => {
-//     console.log(results[0], results[1], results[2]);
-//   })
-//   .catch((err) => console.log('some err', err));
+Promise.all(
+  urls.map((url) => {
+    return fetch(url)
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err.message, 'particular error');
+        throw Error('Ops!!');
+      });
+  }),
+)
+  .then((results) => {
+    console.log(results);
+  })
+  .catch((err) => console.log('some err', err));
 // GET https://jsonplaceholder.typicode.om/users net::ERR_NAME_NOT_RESOLVED
 
 //  Failed to fetch particular error
@@ -106,13 +106,13 @@ const getUsers = async () => {
   const response = await res.json();
   return response;
 };
-getUsers()
-  .then((res) => {
-    console.log(res, 'data');
-  })
-  .catch((err) => {
-    console.log('err out', err.message);
-  });
+// getUsers()
+//   .then((res) => {
+//     console.log(res, 'data');
+//   })
+//   .catch((err) => {
+//     console.log('err out', err.message);
+//   });
 
 const promise1 = async () => {
   const res = await fetch('https://jsonplaceholder.typicode.com/todos');

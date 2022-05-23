@@ -89,12 +89,93 @@ const b = {
 const c = {
   name: 'lav',
   say() {
+    // return () => {
+    //   console.log(this, 'this');
+    // };
+    // this === c
+    return function () {
+      console.log(this, 'this');
+    };
+    // this === window
+  },
+};
+// c.say()(); // this === c becauee in arrao func this === lexicalscope
+
+const d = {
+  name: 'lav',
+  say: () => {
+    console.log(this, 'firstthis');
+    //window
+    return function () {
+      console.log(this, 'secondthis');
+      //window
+    };
+  },
+};
+// d.say()(); //this === window becaue in general if it doent get any obj it will do so
+
+const e = {
+  name: 'lav',
+  say: () => {
     return () => {
       console.log(this, 'this');
     };
   },
 };
-// c.say()(); this === c becauee in arrao func this === lexicalscope
+// e.say()(); //this === window becaue in general if it doent get any obj it will do so
+
+const f = {
+  name: 'lav',
+  say() {
+    const firstthis = this;
+    console.log(firstthis, 'firstthis');
+    //lav
+    const obj = {
+      name: 'karan',
+      dontsay: () => {
+        const secondthis = this;
+        console.log(secondthis, 'secondthis');
+        //lav
+        return function () {
+          const thirdthis = this;
+          console.log(thirdthis, 'thirdthis');
+        };
+        //window
+      },
+    };
+    return obj;
+  },
+};
+f.say().dontsay()();
+
+const g = {
+  name: 'lav',
+  say() {
+    const firstthis = this;
+    console.log(firstthis, 'firstthis');
+    const obj = {
+      name: 'karan',
+      dontsay() {
+        const secondthis = this;
+        console.log(secondthis, 'secondthis');
+        // karan
+
+        // return () => {
+        //   const thirdthis = this;
+        //   console.log(thirdthis, 'thirdthis');
+        // };
+        // karan
+        return function () {
+          const thirdthis = this;
+          console.log(thirdthis, 'thirdthis');
+        };
+        // this === window
+      },
+    };
+    return obj;
+  },
+};
+g.say().dontsay()();
 
 //  Note this always point to the object attached to it but in arrow function it always point to lexical scope
 
@@ -162,17 +243,20 @@ const c = {
 // };
 // object.method(callback, 1, 2); // 4
 
-// 4)
-// var length = 4;
+//4)
+var length = 4;
 // function callback() {
-//   console.log(this.length); // What is logged?
+//   console.log(this.length); // What is logged? // 3
 // }
-// const object = {
-//   length: 5,
-//   method() {
-//     arguments[0]();
-//   },
-// };
+const callback = () => {
+  console.log(this.length); // What is logged? // 4 becasue here argunments has arrow function as key so this will be pointed to window
+};
+const object = {
+  length: 5,
+  method() {
+    arguments[0]();
+  },
+};
 // object.method(callback, 1, 2);
 //     IF u see this points to arguments becaue its special array like object
 // {

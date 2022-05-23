@@ -32,36 +32,36 @@
 
 // //  confusing parts
 
-// Elf.prototype.build = function () {
-//   // this points to Elf
-//   // console.log(this, 'this');
-//   // function building() {
-//   //   // this points to global
-//   //   // console.log(this, 'this');
-//   //   console.log('build by - ', this.name);
-//   // }
-//   // building();
+Elf.prototype.build = function () {
+  // this points to Elf
+  console.log(this, 'this');
+  function building() {
+    // this points to global
+    // console.log(this, 'this');
+    console.log('build by - ', this.name);
+  }
+  building();
 
-//   // 1
-//   // building.bind(this)();
+  // 1
+  // building.bind(this)();
 
-//   // //  2
-//   // const self = this;
-//   // function building() {
-//   //   // this points to global
-//   //   // console.log(this, 'this');
-//   //   console.log('build by - ', self.name);
-//   // }
-//   // building();
+  // //  2
+  // const self = this;
+  // function building() {
+  //   // this points to global
+  //   // console.log(this, 'this');
+  //   console.log('build by - ', self.name);
+  // }
+  // building();
 
-//   //  3
-//   const building = () => {
-//     // this points to global
-//     // console.log(this, 'this');
-//     console.log('build by - ', this.name);
-//   };
-//   building();
-// };
+  //  3
+  const building = () => {
+    // this points to global
+    // console.log(this, 'this');
+    console.log('build by - ', this.name);
+  };
+  building();
+};
 
 // const lavelf = new Elf('karan', 'fire');
 // // console.log(lavelf.__proto__, 'proto'); // {attack:...,constructot:Elf}

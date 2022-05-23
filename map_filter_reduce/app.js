@@ -94,8 +94,6 @@ console.log(res);
 //     }
 //     return localarr;
 //   };
-//   // arr.push(recursionFunction(this));
-//   //  arr.push(recursionFunction(this))
 //   return recursionFunction(this);
 // };
 
