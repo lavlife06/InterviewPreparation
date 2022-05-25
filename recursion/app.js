@@ -47,19 +47,19 @@
 
 // Solution
 const magic = (obj) => {
-    let finalObj = {};
-    const helper = (newobj, newkey) => {
-        for (let key in newobj) {
-            if (typeof newobj[key] === "object") {
-                helper(newobj[key], newkey + "_" + key);
-            } else {
-                finalObj[newkey + "_" + key] = newobj[key];
-            }
-        }
-    };
+  let finalObj = {};
+  const helper = (newobj, newkey) => {
+    for (let key in newobj) {
+      if (typeof newobj[key] === 'object') {
+        helper(newobj[key], newkey + '_' + key);
+      } else {
+        finalObj[newkey + '_' + key] = newobj[key];
+      }
+    }
+  };
 
-    helper(obj, "user");
-    return finalObj;
+  helper(obj, 'user');
+  return finalObj;
 };
 console.log(magic(user));
 
@@ -90,3 +90,33 @@ console.log(magic(user));
 // };
 
 // recursiveFunc();
+
+const findlongest = (str) => {
+  let longstrlength = 0;
+
+  const recursiveHelperFunc = (startindex) => {
+    let helperstrlength = 0;
+    const uniqueCharacterObj = {};
+    for (let i = startindex; i < str.length; i++) {
+      console.log(helperstrlength, 'helperstrlength');
+      if (!uniqueCharacterObj.hasOwnProperty(str[i])) {
+        uniqueCharacterObj[str[i]] = i;
+        helperstrlength++;
+      } else {
+        if (helperstrlength > longstrlength) {
+          longstrlength = helperstrlength;
+        }
+        return recursiveHelperFunc(uniqueCharacterObj[str[i]] + 1);
+      }
+    }
+    if (helperstrlength > longstrlength) {
+      longstrlength = helperstrlength;
+    }
+  };
+
+  recursiveHelperFunc(0);
+  return longstrlength;
+};
+
+// console.log(findlongest('tstrdtpcq'));
+// console.log(findlongest('abccdbca'));

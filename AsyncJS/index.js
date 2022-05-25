@@ -171,3 +171,48 @@ const promise2 = async () => {
 //   .catch((err) => {
 //     console.log(err, 'err');
 //   });
+
+const callApiAfter5SecondLogic = (arr, func) => {
+  let flag = true;
+  let currIndex = 0;
+  let timer;
+  const checkFetchData = (index) => {
+    if (flag) {
+      func(arr[index])
+        .then((res) => {
+          console.log(res, 'res');
+          flag = true;
+        })
+        .catch((err) => {
+          flag = true;
+        });
+      flag = false;
+      currIndex++;
+    }
+  };
+
+  return () => {
+    timer = setInterval(() => {
+      if (timer && arr.length === currIndex) {
+        clearInterval(timer);
+      } else {
+        checkFetchData(currIndex);
+      }
+    }, 1000);
+
+    checkFetchData(currIndex);
+  };
+};
+
+const getCarsInfo = (carid) => {
+  return new Promise((res, rej) => {
+    const randomnumber = Math.floor(Math.random() * 10);
+    console.log(randomnumber, 'randomnumber');
+    setTimeout(() => {
+      res(carid);
+    }, [randomnumber * 1000]);
+  });
+};
+
+const getCarDetailsNewWay = callApiAfter5SecondLogic(['car1', 'car2', 'car3', 'car4'], getCarsInfo);
+// getCarDetailsNewWay();
