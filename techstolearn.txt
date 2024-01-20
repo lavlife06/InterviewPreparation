@@ -1,0 +1,19 @@
+Learn following techs -- 
+- React
+- Javascript
+- Redux
+- Basic AWS
+- Redis-Queue
+- Docker 
+- PostgreSQL
+- RDS
+- NodeJS
+- How read-write replicas work
+- Cache
+- ECS
+- GraphQL
+- Socket.io
+- MongoDB
+- React Native
+- Ansible
+- SSH login and all

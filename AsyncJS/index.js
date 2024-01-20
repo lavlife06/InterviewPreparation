@@ -33,9 +33,9 @@ Promise.all(
   }),
 )
   .then((results) => {
-    console.log(results);
+    console.log("results",results);
   })
-  .catch((err) => console.log('some err', err));
+  .catch((err) => console.log('err in promise catch', err));
 // GET https://jsonplaceholder.typicode.om/users net::ERR_NAME_NOT_RESOLVED
 
 //  Failed to fetch particular error
