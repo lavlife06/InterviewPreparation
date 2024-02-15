@@ -1,12 +1,12 @@
 // const arr = [5, 10, 4, 6, 5];
 
 const arr = [
-  { name: 'lav', age: 54 },
-  { name: 'karan', age: 34 },
-  { name: 'lav1', age: 54 },
-  { name: 'lav2', age: 44 },
-  { name: 'lav3', age: 34 },
-  { name: 'lav4', age: 52 },
+  { name: "lav", age: 54 },
+  { name: "karan", age: 34 },
+  { name: "lav1", age: 54 },
+  { name: "lav2", age: 44 },
+  { name: "lav3", age: 34 },
+  { name: "lav4", age: 52 },
 ];
 
 //  acc = accumulator and  curr =  current element

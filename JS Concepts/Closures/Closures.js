@@ -55,7 +55,7 @@
 
 function ClickCounter() {
   let count = 0;
-  document.getElementById('clickme').addEventListener('click', function () {
+  document.getElementById("clickme").addEventListener("click", function () {
     console.log(++count);
   });
 }
@@ -143,3 +143,16 @@ ClickCounter();
 // onOff(); // "on"
 // onOff(); // "off"
 // onOff(); // "on"
+
+// // Use Cases
+// Data Encapsulation
+// Factory Functions
+// Callback Functions
+// Event Handlers
+// Module Pattern
+// Currying
+// Memoization
+// Iterators and Generators
+// Dynamic Function Generation
+// Emulating Private Method
+// Timeouts

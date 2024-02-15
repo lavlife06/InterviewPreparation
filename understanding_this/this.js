@@ -4,6 +4,10 @@
 // 3) fucntion as a method  -  Method invocaiton pattern
 // 4)  fucntion as a indirect call  -  Indirect  invocaiton pattern
 
+// Note
+// obj.method() === this.obj.method() i.e. anything on the left of function call is the scope for that function
+// Here method has the scope of obj and obj has the scope of windows and so if method doesn't get any obj scope then it will take global one i.e. this.obj becasue obj is connected to global this
+
 // function lav() {
 //     console.log(this, "1");
 // }
@@ -40,7 +44,7 @@ function Product(item, price) {
 // 33333333333333333 F incocation 3  - fucntion as a method  -  Method invocaiton pattern
 
 let obj = {
-  name: 'lav',
+  name: "lav",
   age: 21,
   display: function () {
     console.log(this, this.name);
@@ -56,7 +60,7 @@ let obj = {
 // 44444444444444444 F incocation 4  - fucntion as a indirect call  -  Indirect  invocaiton pattern
 
 let obj2 = {
-  name: 'karan',
+  name: "karan",
   age: 12,
 };
 
@@ -70,31 +74,31 @@ let obj2 = {
 // 3) this is the object attached to the function/method eg- obj.xyz()  here this === obj if xyz() then this ===  window
 
 const a = {
-  name: 'lav',
+  name: "lav",
   say() {
-    console.log(this, 'this');
+    console.log(this, "this");
   },
 };
 // a.say(); this === a
 const b = {
-  name: 'lav',
+  name: "lav",
   say() {
     return function () {
-      console.log(this, 'this');
+      console.log(this, "this");
     };
   },
 };
 // b.say()(); //this === window becaue in general if it doent get any obj it will do so
 
 const c = {
-  name: 'lav',
+  name: "lav",
   say() {
     // return () => {
     //   console.log(this, 'this');
     // };
     // this === c
     return function () {
-      console.log(this, 'this');
+      console.log(this, "this");
     };
     // this === window
   },
@@ -102,12 +106,12 @@ const c = {
 // c.say()(); // this === c becauee in arrao func this === lexicalscope
 
 const d = {
-  name: 'lav',
+  name: "lav",
   say: () => {
-    console.log(this, 'firstthis');
+    console.log(this, "firstthis");
     //window
     return function () {
-      console.log(this, 'secondthis');
+      console.log(this, "secondthis");
       //window
     };
   },
@@ -115,30 +119,30 @@ const d = {
 // d.say()(); //this === window becaue in general if it doent get any obj it will do so
 
 const e = {
-  name: 'lav',
+  name: "lav",
   say: () => {
     return () => {
-      console.log(this, 'this');
+      console.log(this, "this");
     };
   },
 };
 // e.say()(); //this === window becaue in general if it doent get any obj it will do so
 
 const f = {
-  name: 'lav',
+  name: "lav",
   say() {
     const firstthis = this;
-    console.log(firstthis, 'firstthis');
+    console.log(firstthis, "firstthis");
     //lav
     const obj = {
-      name: 'karan',
+      name: "karan",
       dontsay: () => {
         const secondthis = this;
-        console.log(secondthis, 'secondthis');
+        console.log(secondthis, "secondthis");
         //lav
         return function () {
           const thirdthis = this;
-          console.log(thirdthis, 'thirdthis');
+          console.log(thirdthis, "thirdthis");
         };
         //window
       },
@@ -149,15 +153,15 @@ const f = {
 f.say().dontsay()();
 
 const g = {
-  name: 'lav',
+  name: "lav",
   say() {
     const firstthis = this;
-    console.log(firstthis, 'firstthis');
+    console.log(firstthis, "firstthis");
     const obj = {
-      name: 'karan',
+      name: "karan",
       dontsay() {
         const secondthis = this;
-        console.log(secondthis, 'secondthis');
+        console.log(secondthis, "secondthis");
         // karan
 
         // return () => {
@@ -167,7 +171,7 @@ const g = {
         // karan
         return function () {
           const thirdthis = this;
-          console.log(thirdthis, 'thirdthis');
+          console.log(thirdthis, "thirdthis");
         };
         // this === window
       },
